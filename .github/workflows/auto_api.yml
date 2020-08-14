@@ -1,9 +1,7 @@
 #自动调用api保活，加密版
-name: Auto Api Secret
+name: Auto Api Refresh
 
 on: 
-  release:
-    types: [published]
   push:
     tags:
     - 'v*'
@@ -49,8 +47,8 @@ jobs:
         rm -f configkey.txt    
     - name: Commit #上传新的refresh_token到仓库
       run: |
-        git config --global user.email AutoupdateRobot@email.com
-        git config --global user.name AutoupdateRobot
+        git config --global user.email action@github.com
+        git config --global user.name GitHub Action
         git add .
         git commit -m "update new refresh_token" -a
     - name: Push changes
